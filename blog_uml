@@ -1,0 +1,1757 @@
+%!PS-Adobe-2.0
+%%Title: Printing Printout
+%%Creator: wxWidgets PostScript renderer
+%%CreationDate: Fri Jan 11 05:22:34 2013
+%%Orientation: Portrait
+%%DocumentPaperSizes: A4
+%%EndComments
+
+%%BeginProlog
+/conicto {
+    /to_y exch def
+    /to_x exch def
+    /conic_cntrl_y exch def
+    /conic_cntrl_x exch def
+    currentpoint
+    /p0_y exch def
+    /p0_x exch def
+    /p1_x p0_x conic_cntrl_x p0_x sub 2 3 div mul add def
+    /p1_y p0_y conic_cntrl_y p0_y sub 2 3 div mul add def
+    /p2_x p1_x to_x p0_x sub 1 3 div mul add def
+    /p2_y p1_y to_y p0_y sub 1 3 div mul add def
+    p1_x p1_y p2_x p2_y to_x to_y curveto
+}  bind def
+/ellipsedict 8 dict def
+ellipsedict /mtrx matrix put
+/ellipse {
+    ellipsedict begin
+    /endangle exch def
+    /startangle exch def
+    /yrad exch def
+    /xrad exch def
+    /y exch def
+    /x exch def
+    /savematrix mtrx currentmatrix def
+    x y translate
+    xrad yrad scale
+    0 0 1 startangle endangle arc
+    savematrix setmatrix
+    end
+    } def
+/ellipticarcdict 8 dict def
+ellipticarcdict /mtrx matrix put
+/ellipticarc
+{ ellipticarcdict begin
+  /do_fill exch def
+  /endangle exch def
+  /startangle exch def
+  /yrad exch def
+  /xrad exch def 
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  xrad yrad scale
+  do_fill { 0 0 moveto } if
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+  do_fill { fill }{ stroke } ifelse
+  end
+} def
+% define 'colorimage' if it isn't defined
+%   ('colortogray' and 'mergeprocs' come from xwd2ps
+%     via xgrab)
+/colorimage where   % do we know about 'colorimage'?
+  { pop }           % yes: pop off the 'dict' returned
+  {                 % no:  define one
+    /colortogray {  % define an RGB->I function
+      /rgbdata exch store    % call input 'rgbdata'
+      rgbdata length 3 idiv
+      /npixls exch store
+      /rgbindx 0 store
+      0 1 npixls 1 sub {
+        grays exch
+        rgbdata rgbindx       get 20 mul    % Red
+        rgbdata rgbindx 1 add get 32 mul    % Green
+        rgbdata rgbindx 2 add get 12 mul    % Blue
+        add add 64 idiv      % I = .5G + .31R + .18B
+        put
+        /rgbindx rgbindx 3 add store
+      } for
+      grays 0 npixls getinterval
+    } bind def
+
+    % Utility procedure for colorimage operator.
+    % This procedure takes two procedures off the
+    % stack and merges them into a single procedure.
+
+    /mergeprocs { % def
+      dup length
+      3 -1 roll
+      dup
+      length
+      dup
+      5 1 roll
+      3 -1 roll
+      add
+      array cvx
+      dup
+      3 -1 roll
+      0 exch
+      putinterval
+      dup
+      4 2 roll
+      putinterval
+    } bind def
+
+    /colorimage { % def
+      pop pop     % remove 'false 3' operands
+      {colortogray} mergeprocs
+      image
+    } bind def
+  } ifelse          % end of 'false' case
+
+/reencodeISO {
+dup dup findfont dup length dict begin
+{ 1 index /FID ne { def }{ pop pop } ifelse } forall
+/Encoding ISOLatin1Encoding def
+currentdict end definefont
+} def
+/ISOLatin1Encoding [
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/space/exclam/quotedbl/numbersign/dollar/percent/ampersand/quoteright
+/parenleft/parenright/asterisk/plus/comma/minus/period/slash
+/zero/one/two/three/four/five/six/seven/eight/nine/colon/semicolon
+/less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N
+/O/P/Q/R/S/T/U/V/W/X/Y/Z/bracketleft/backslash/bracketright
+/asciicircum/underscore/quoteleft/a/b/c/d/e/f/g/h/i/j/k/l/m
+/n/o/p/q/r/s/t/u/v/w/x/y/z/braceleft/bar/braceright/asciitilde
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/dotlessi/grave/acute/circumflex/tilde/macron/breve
+/dotaccent/dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut
+/ogonek/caron/space/exclamdown/cent/sterling/currency/yen/brokenbar
+/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot
+/hyphen/registered/macron/degree/plusminus/twosuperior/threesuperior
+/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine
+/guillemotright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla
+/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex
+/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
+/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute
+/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis
+/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave
+/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex
+/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis
+/yacute/thorn/ydieresis
+] def
+
+/DrawSplineSection {
+    /y3 exch def
+    /x3 exch def
+    /y2 exch def
+    /x2 exch def
+    /y1 exch def
+    /x1 exch def
+    /xa x1 x2 x1 sub 0.666667 mul add def
+    /ya y1 y2 y1 sub 0.666667 mul add def
+    /xb x3 x2 x3 sub 0.666667 mul add def
+    /yb y3 y2 y3 sub 0.666667 mul add def
+    x1 y1 lineto
+    xa ya xb yb x3 y3 curveto
+    } def
+%%EndProlog
+1.000000 setlinewidth
+%%Page: 1
+1.00000000 1.00000000 scale
+0 0 translate
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+9 468 moveto
+89 468 lineto
+89 443 lineto
+9 443 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+7 470 moveto
+88 470 lineto
+88 445 lineto
+7 445 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+7 470 moveto
+88 470 lineto
+88 445 lineto
+7 445 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 470 moveto
+87 470 lineto
+87 464 lineto
+7 464 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+9 467 moveto
+(Handler\(webapp2.RequestHandler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+7 464 moveto
+88 464 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 463 moveto
+87 463 lineto
+87 445 lineto
+7 445 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+7 460 moveto
+(write\(self,*a,**kw\)) show
+7 455 moveto
+(render_str\(self,template,**params\)) show
+7 449 moveto
+(render\(self,template,**kw\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+8 423 moveto
+58 423 lineto
+58 408 lineto
+8 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+6 425 moveto
+56 425 lineto
+56 410 lineto
+6 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+6 425 moveto
+56 425 lineto
+56 410 lineto
+6 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 424 moveto
+55 424 lineto
+55 418 lineto
+7 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+8 421 moveto
+(MainHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+6 417 moveto
+56 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 417 moveto
+55 417 lineto
+55 410 lineto
+7 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+7 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+41 444 moveto
+34 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+34 426 moveto
+34 429 lineto
+36 429 lineto
+34 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+34 426 moveto
+34 429 lineto
+36 429 lineto
+34 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+65 423 moveto
+126 423 lineto
+126 408 lineto
+65 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+63 425 moveto
+124 425 lineto
+124 410 lineto
+63 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+63 425 moveto
+124 425 lineto
+124 410 lineto
+63 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+63 424 moveto
+123 424 lineto
+123 418 lineto
+63 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+65 421 moveto
+(JSONPostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+63 417 moveto
+124 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+63 417 moveto
+123 417 lineto
+123 410 lineto
+63 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+63 414 moveto
+(get\(self,post_id\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+63 444 moveto
+84 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+84 426 moveto
+80 427 lineto
+82 429 lineto
+84 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+84 426 moveto
+80 427 lineto
+82 429 lineto
+84 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+132 423 moveto
+250 423 lineto
+250 397 lineto
+132 397 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+130 425 moveto
+248 425 lineto
+248 399 lineto
+130 399 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+130 425 moveto
+248 425 lineto
+248 399 lineto
+130 399 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+131 424 moveto
+248 424 lineto
+248 419 lineto
+131 419 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+161 421 moveto
+(NewPostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+130 418 moveto
+248 418 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+131 418 moveto
+248 418 lineto
+248 399 lineto
+131 399 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+131 415 moveto
+(render_newpost\(self,subject="",content="",error=""\)) show
+131 409 moveto
+(get\(self\)) show
+131 403 moveto
+(post\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 444 moveto
+146 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+146 426 moveto
+142 426 lineto
+143 428 lineto
+146 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+146 426 moveto
+142 426 lineto
+143 428 lineto
+146 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+257 423 moveto
+305 423 lineto
+305 403 lineto
+257 403 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+255 425 moveto
+303 425 lineto
+303 405 lineto
+255 405 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+255 425 moveto
+303 425 lineto
+303 405 lineto
+255 405 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+256 424 moveto
+303 424 lineto
+303 419 lineto
+256 419 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+257 421 moveto
+(BlogHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+255 418 moveto
+303 418 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+256 418 moveto
+303 418 lineto
+303 405 lineto
+256 405 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+256 415 moveto
+(render_blog\(self\)) show
+256 409 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 450 moveto
+254 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+254 420 moveto
+250 419 lineto
+251 421 lineto
+254 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+254 420 moveto
+250 419 lineto
+251 421 lineto
+254 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+312 423 moveto
+362 423 lineto
+362 408 lineto
+312 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+310 425 moveto
+360 425 lineto
+360 410 lineto
+310 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+310 425 moveto
+360 425 lineto
+360 410 lineto
+310 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+310 424 moveto
+359 424 lineto
+359 418 lineto
+310 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+311 421 moveto
+(FlushHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+310 417 moveto
+360 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+310 417 moveto
+359 417 lineto
+359 410 lineto
+310 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+310 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 452 moveto
+309 421 lineto
+stroke
+0.331000 setlinewidth
+newpath
+309 421 moveto
+305 421 lineto
+306 423 lineto
+309 421 lineto
+eofill
+0.331000 setlinewidth
+newpath
+309 421 moveto
+305 421 lineto
+306 423 lineto
+309 421 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+368 423 moveto
+429 423 lineto
+429 408 lineto
+368 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+366 425 moveto
+427 425 lineto
+427 410 lineto
+366 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+366 425 moveto
+427 425 lineto
+427 410 lineto
+366 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+367 424 moveto
+427 424 lineto
+427 418 lineto
+367 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+368 421 moveto
+(JSONBlogHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+366 417 moveto
+427 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+367 417 moveto
+427 417 lineto
+427 410 lineto
+367 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+367 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 453 moveto
+365 421 lineto
+stroke
+0.331000 setlinewidth
+newpath
+365 421 moveto
+362 420 lineto
+362 423 lineto
+365 421 lineto
+eofill
+0.331000 setlinewidth
+newpath
+365 421 moveto
+362 420 lineto
+362 423 lineto
+365 421 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+436 423 moveto
+495 423 lineto
+495 408 lineto
+436 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+434 425 moveto
+493 425 lineto
+493 410 lineto
+434 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+434 425 moveto
+493 425 lineto
+493 410 lineto
+434 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+434 424 moveto
+493 424 lineto
+493 418 lineto
+434 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+435 421 moveto
+(WelcomeHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+434 417 moveto
+493 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+434 417 moveto
+493 417 lineto
+493 410 lineto
+434 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+434 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 453 moveto
+433 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+433 420 moveto
+429 420 lineto
+429 422 lineto
+433 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+433 420 moveto
+429 420 lineto
+429 422 lineto
+433 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+502 423 moveto
+550 423 lineto
+550 408 lineto
+502 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+500 425 moveto
+548 425 lineto
+548 410 lineto
+500 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+500 425 moveto
+548 425 lineto
+548 410 lineto
+500 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+500 424 moveto
+548 424 lineto
+548 418 lineto
+500 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+501 421 moveto
+(PostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+500 417 moveto
+548 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+500 417 moveto
+548 417 lineto
+548 410 lineto
+500 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+500 414 moveto
+(get\(self,post_id\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 454 moveto
+499 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+499 420 moveto
+495 419 lineto
+495 421 lineto
+499 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+499 420 moveto
+495 419 lineto
+495 421 lineto
+499 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+8 379 moveto
+(Drawn by SPE [http://pythonide.stani.be]) show
+showpage
+%%Page: 2
+1.00000000 1.00000000 scale
+0 0 translate
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+9 468 moveto
+89 468 lineto
+89 443 lineto
+9 443 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+7 470 moveto
+88 470 lineto
+88 445 lineto
+7 445 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+7 470 moveto
+88 470 lineto
+88 445 lineto
+7 445 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 470 moveto
+87 470 lineto
+87 464 lineto
+7 464 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+9 467 moveto
+(Handler\(webapp2.RequestHandler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+7 464 moveto
+88 464 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 463 moveto
+87 463 lineto
+87 445 lineto
+7 445 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+7 460 moveto
+(write\(self,*a,**kw\)) show
+7 455 moveto
+(render_str\(self,template,**params\)) show
+7 449 moveto
+(render\(self,template,**kw\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+8 423 moveto
+58 423 lineto
+58 408 lineto
+8 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+6 425 moveto
+56 425 lineto
+56 410 lineto
+6 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+6 425 moveto
+56 425 lineto
+56 410 lineto
+6 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 424 moveto
+55 424 lineto
+55 418 lineto
+7 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+8 421 moveto
+(MainHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+6 417 moveto
+56 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+7 417 moveto
+55 417 lineto
+55 410 lineto
+7 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+7 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+41 444 moveto
+34 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+34 426 moveto
+34 429 lineto
+36 429 lineto
+34 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+34 426 moveto
+34 429 lineto
+36 429 lineto
+34 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+65 423 moveto
+126 423 lineto
+126 408 lineto
+65 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+63 425 moveto
+124 425 lineto
+124 410 lineto
+63 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+63 425 moveto
+124 425 lineto
+124 410 lineto
+63 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+63 424 moveto
+123 424 lineto
+123 418 lineto
+63 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+65 421 moveto
+(JSONPostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+63 417 moveto
+124 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+63 417 moveto
+123 417 lineto
+123 410 lineto
+63 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+63 414 moveto
+(get\(self,post_id\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+63 444 moveto
+84 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+84 426 moveto
+80 427 lineto
+82 429 lineto
+84 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+84 426 moveto
+80 427 lineto
+82 429 lineto
+84 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+132 423 moveto
+250 423 lineto
+250 397 lineto
+132 397 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+130 425 moveto
+248 425 lineto
+248 399 lineto
+130 399 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+130 425 moveto
+248 425 lineto
+248 399 lineto
+130 399 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+131 424 moveto
+248 424 lineto
+248 419 lineto
+131 419 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+161 421 moveto
+(NewPostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+130 418 moveto
+248 418 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+131 418 moveto
+248 418 lineto
+248 399 lineto
+131 399 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+131 415 moveto
+(render_newpost\(self,subject="",content="",error=""\)) show
+131 409 moveto
+(get\(self\)) show
+131 403 moveto
+(post\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 444 moveto
+146 426 lineto
+stroke
+0.331000 setlinewidth
+newpath
+146 426 moveto
+142 426 lineto
+143 428 lineto
+146 426 lineto
+eofill
+0.331000 setlinewidth
+newpath
+146 426 moveto
+142 426 lineto
+143 428 lineto
+146 426 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+257 423 moveto
+305 423 lineto
+305 403 lineto
+257 403 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+255 425 moveto
+303 425 lineto
+303 405 lineto
+255 405 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+255 425 moveto
+303 425 lineto
+303 405 lineto
+255 405 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+256 424 moveto
+303 424 lineto
+303 419 lineto
+256 419 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+257 421 moveto
+(BlogHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+255 418 moveto
+303 418 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+256 418 moveto
+303 418 lineto
+303 405 lineto
+256 405 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+256 415 moveto
+(render_blog\(self\)) show
+256 409 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 450 moveto
+254 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+254 420 moveto
+250 419 lineto
+251 421 lineto
+254 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+254 420 moveto
+250 419 lineto
+251 421 lineto
+254 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+312 423 moveto
+362 423 lineto
+362 408 lineto
+312 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+310 425 moveto
+360 425 lineto
+360 410 lineto
+310 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+310 425 moveto
+360 425 lineto
+360 410 lineto
+310 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+310 424 moveto
+359 424 lineto
+359 418 lineto
+310 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+311 421 moveto
+(FlushHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+310 417 moveto
+360 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+310 417 moveto
+359 417 lineto
+359 410 lineto
+310 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+310 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 452 moveto
+309 421 lineto
+stroke
+0.331000 setlinewidth
+newpath
+309 421 moveto
+305 421 lineto
+306 423 lineto
+309 421 lineto
+eofill
+0.331000 setlinewidth
+newpath
+309 421 moveto
+305 421 lineto
+306 423 lineto
+309 421 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+368 423 moveto
+429 423 lineto
+429 408 lineto
+368 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+366 425 moveto
+427 425 lineto
+427 410 lineto
+366 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+366 425 moveto
+427 425 lineto
+427 410 lineto
+366 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+367 424 moveto
+427 424 lineto
+427 418 lineto
+367 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+368 421 moveto
+(JSONBlogHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+366 417 moveto
+427 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+367 417 moveto
+427 417 lineto
+427 410 lineto
+367 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+367 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 453 moveto
+365 421 lineto
+stroke
+0.331000 setlinewidth
+newpath
+365 421 moveto
+362 420 lineto
+362 423 lineto
+365 421 lineto
+eofill
+0.331000 setlinewidth
+newpath
+365 421 moveto
+362 420 lineto
+362 423 lineto
+365 421 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+436 423 moveto
+495 423 lineto
+495 408 lineto
+436 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+434 425 moveto
+493 425 lineto
+493 410 lineto
+434 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+434 425 moveto
+493 425 lineto
+493 410 lineto
+434 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+434 424 moveto
+493 424 lineto
+493 418 lineto
+434 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+435 421 moveto
+(WelcomeHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+434 417 moveto
+493 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+434 417 moveto
+493 417 lineto
+493 410 lineto
+434 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+434 414 moveto
+(get\(self\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 453 moveto
+433 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+433 420 moveto
+429 420 lineto
+429 422 lineto
+433 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+433 420 moveto
+429 420 lineto
+429 422 lineto
+433 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+0.331000 setlinewidth
+[] 0 setdash
+1.00000000 1.00000000 1.00000000 setrgbcolor
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+502 423 moveto
+550 423 lineto
+550 408 lineto
+502 408 lineto
+closepath
+fill
+0.331000 setlinewidth
+[] 0 setdash
+0.75294118 0.75294118 0.75294118 setrgbcolor
+newpath
+500 425 moveto
+548 425 lineto
+548 410 lineto
+500 410 lineto
+closepath
+fill
+0.331000 setlinewidth
+0.00000000 0.00000000 0.00000000 setrgbcolor
+newpath
+500 425 moveto
+548 425 lineto
+548 410 lineto
+500 410 lineto
+closepath
+stroke
+0.331000 setlinewidth
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+500 424 moveto
+548 424 lineto
+548 418 lineto
+500 418 lineto
+closepath clip newpath
+1.00000000 0.00000000 0.00000000 setrgbcolor
+501 421 moveto
+(PostHandler\(Handler\)) show
+grestore
+0.331000 setlinewidth
+0.31372549 0.31372549 0.31372549 setrgbcolor
+0.331000 setlinewidth
+newpath
+500 417 moveto
+548 417 lineto
+stroke
+/Helvetica reencodeISO def
+/Helvetica findfont
+3.315000 scalefont setfont
+gsave
+ newpath
+500 417 moveto
+548 417 lineto
+548 410 lineto
+500 410 lineto
+closepath clip newpath
+0.00000000 0.00000000 0.00000000 setrgbcolor
+500 414 moveto
+(get\(self,post_id\)) show
+grestore
+0.331000 setlinewidth
+0.331000 setlinewidth
+0.331000 setlinewidth
+newpath
+89 454 moveto
+499 420 lineto
+stroke
+0.331000 setlinewidth
+newpath
+499 420 moveto
+495 419 lineto
+495 421 lineto
+499 420 lineto
+eofill
+0.331000 setlinewidth
+newpath
+499 420 moveto
+495 419 lineto
+495 421 lineto
+499 420 lineto
+closepath
+stroke
+0.331000 setlinewidth
+8 379 moveto
+(Drawn by SPE [http://pythonide.stani.be]) show
+showpage
